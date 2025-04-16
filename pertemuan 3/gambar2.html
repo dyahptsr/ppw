@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elegant Efflorescence</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8cbee;
+    }
+        header {
+      background: #f772c4;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .product {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product h3 {
+      margin: 0.5rem 0;
+    }
+    .product button {
+      background: #f51d94;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .product button:hover {
+      background: #f51d94;
+    }
+    #cart {
+      background: #ffffff;
+      padding: 1rem;
+      margin: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product:hover {
+  transform: scale(1.02);
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.product button:active {
+  transform: scale(0.98);
+  box-shadow: 0 0 10px #ff80c0;
+}
+@media (max-width: 600px) {
+  .product {
+    padding: 0.5rem;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding: 0.5rem;
+  }
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Elegant Efflorescence</h1>
+  <div style="text-align:center; padding: 0%; background: #f772c4;">
+    <h2 style="margin: 0;">Bloom With Elegance 🌷</h2>
+    <p>Fresh flowers, beautifully arranged just for you.</p>
+  </div>  
+</header>
+  
+
+<div class="container" id="product-list">
+  <!-- Products will be rendered here -->
+</div>
+
+
+ 
+  
+
+<div id="cart">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total: <span id="total">Rp0</span></strong></p>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+  
+
+<script>
+  const products = [
+    { id: 1, name: "ROSES", price: 300000, image: "images/mawar.jpg" },
+    { id: 2, name: "TULIPS", price: 500000, image: "images/tulip.jpg" },
+    { id: 3, name: "PEONIES", price: 800000, image: "images/peony.jpg" },
+    { id: 4, name: "SUNFLOWER", price: 400000, image: "images/sunflower.jpg" }
+  ];
+
+  function checkout() {
+  if (total === 0) {
+    alert("Your cart is empty. Please add some flowers first!");
+    return;
+  }
+
+  const confirmation = confirm(`Your total is Rp${total.toLocaleString('id-ID')}. Proceed to checkout?`);
+  if (confirmation) {
+    alert("Thank you for your purchase! 🌸");
+    // Reset cart
+    cartItems.innerHTML = "";
+    total = 0;
+    totalDisplay.textContent = "Rp0";
+  }
+}
+
+
+  const productList = document.getElementById("product-list");
+  const cartItems = document.getElementById("cart-items");
+  const totalDisplay = document.getElementById("total");
+  let total = 0;
+
+  products.forEach(product => {
+    const productDiv = document.createElement("div");
+    productDiv.classList.add("product");
+    productDiv.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" />
+      <h3>${product.name}</h3>
+      <p>Rp${product.price.toLocaleString('id-ID')}</p>
+      <button onclick="addToCart(${product.id})">Add to Cart</button>
+    `;
+    productList.appendChild(productDiv);
+  });
+
+  function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    const li = document.createElement("li");
+    li.textContent = `${product.name} - Rp${product.price.toLocaleString('id-ID')}`;
+    cartItems.appendChild(li);
+    total += product.price;
+    totalDisplay.textContent = "Rp" + total.toLocaleString('id-ID');
+  }
+</script>
+<footer style="text-align:center; padding: 1rem; background: #e959b9; color: white;">
+    <p>Contact us: dyahptsr@gmail.com</p>
+    <p>Follow us: 🌸 Instagram | 🌻 WhatsApp</p>
+  </footer>  
+</body>
+</html>
