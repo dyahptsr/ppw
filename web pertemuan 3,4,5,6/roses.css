@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: poppins, sans-serif;
+    background: linear-gradient(to bottom, #ffe0f0, #ffffff);
+}
+
+/* untuk stayling bagian header*/
+header{
+    background: linear-gradient(to right, #e96dbb, #ff79c6);
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+    font-family: 'playfair', sans-serif;
+}
+/* untuk stayling bagian header h1*/
+header h1{
+    font-size: 40px;
+    margin: 0;
+}
+/* untuk stayling bagian header h2*/
+header h2{
+    font-weight: normal;
+    font-size: 24px;
+    margin: 10px 0;
+}
+/* untuk stayling bagian header p*/
+header p{
+    font-size: 16px;
+    margin-top: 5px;
+}
+/* untuk stayling bagian product container*/
+.product-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 20px;
+}
+
+/* styling bagian card*/
+.product-card{
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 390px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*hover agar card bergerak*/
+.product-card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 10px 30px rgba (233, 109, 187, 0.3)
+}
+
+/*styling bagian gambar bunga*/
+.product-card img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/*styling bagian deskripsi*/
+.product-card p{
+    font-size: 16px;
+    margin: 10px 0;
+    text-align: justify;
+}
